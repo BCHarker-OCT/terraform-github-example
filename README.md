@@ -1,7 +1,15 @@
 # terraform-github-example
 A template repository to be used for GitHub Terraform Repo Creation.
 
-## Step 1: Setup the GitHub Provider
+## Step 1: Setup `.envrc` file 
+
+1. Copy the `.envrc.example` file to a file named `.envrc`. 
+2. In your GitHub account go to Setting > Developer Settings > Personal access tokens > Tokens classic
+3. Generate a new token using the classic option. Set the expiration as the shortest possible value.
+4. Grant it full rights to the `repo` and `delete_repo` permissions. 
+5. Copy the value into the new `.envrc` file that you've created. 
+
+## Step 2: Setup the GitHub Provider
 
 Setup the [Github Provider](https://registry.terraform.io/providers/integrations/github/latest/docs) in our `providers.tf` file. 
 
@@ -23,15 +31,7 @@ provider "github" {
 }
 ```
 
-## Step 2: Setup `.envrc` file 
-
-1. Copy the `.envrc.example` file to a file named `.envrc`. 
-2. In your GitHub account go to Setting > Developer Settings > Personal access tokens > Tokens classic
-3. Generate a new token using the classic option. Set the expiration as the shortest possible value.
-4. Grant it full rights to the `repo` and `delete_repo` permissions. 
-5. Copy the value into the new `.envrc` file that you've created. 
-
-## Step 3: Setup Variables 
+## Step 4: Setup Variables 
 
 Like any programming language variables allow us to define repetitive values quickly. They also give us flexibility to change out values between environments (dev,qa,prod):
 
@@ -61,7 +61,7 @@ variable "github_token" {
 
 [Variables](https://developer.hashicorp.com/terraform/language/values/variables)
 
-## Setup 4: Setup Resources 
+## Setup 5: Setup Resources 
 
 Finally, we should investigate resources we can setup in our respository that Terraform will make for us. 
 
@@ -98,10 +98,3 @@ Terraform may store secrets in `terraform.tfstate`. For this reason, it is exclu
 - [Terraform Apply](https://developer.hashicorp.com/terraform/cli/commands/apply)
 - [Terraform State](https://developer.hashicorp.com/terraform/cli/commands/state)
 - [🌋Terraform Destory](https://developer.hashicorp.com/terraform/cli/commands/destory)
-
-
-
-
-
-
-
