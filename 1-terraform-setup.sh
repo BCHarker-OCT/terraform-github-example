@@ -12,8 +12,8 @@ terraform init
 direnv allow .
 
 # Create 2 terraform workspaces: one for dev and one for prod
-terraform workspace create dev
-terraform workspace create prod
+terraform workspace new dev
+terraform workspace new prod
 
 # We will deploy to dev in this situation, so this is how we select the environment.
 terraform workspace select dev
