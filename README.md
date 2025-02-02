@@ -33,7 +33,7 @@ provider "github" {
 }
 ```
 
-## Step 4: Setup Variables 
+## Step 4: Setup Variables in `variables.tf` and `z-dev-vars.tfvars` and `z-prod-vars.tfvars` 
 
 Like any programming language variables allow us to define repetitive values quickly. They also give us flexibility to change out values between environments (dev,qa,prod):
 
@@ -43,7 +43,7 @@ Like any programming language variables allow us to define repetitive values qui
 
 For example: 
 
-```terraform
+```terraform variables.tf
 variable "repo_name" {
   description = "Name of the GitHub repository"
   type        = string
@@ -61,9 +61,17 @@ variable "github_token" {
 }
 ```
 
-[Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+We can populate our `.tfvars` files with your own creative variation of: 
+```terraform .tfvars
+repo_name = "my-coooool-dev-repo-1"
+file_name = "README.md"
+```
 
-## Setup 5: Setup Resources 
+>[!TIP]
+[HashiCorp Terraform Variables Documentation](https://developer.hashicorp.com/terraform/language/values/variables)
+
+
+## Setup 5: Setup Resources in `main.tf`  
 
 Finally, we should investigate resources we can setup in our respository that Terraform will make for us. 
 
