@@ -1,37 +1,105 @@
 # terraform-github-example
 A template repository to be used for GitHub Terraform Repo Creation.
 
-## Step 1 Setup the GitHub Provider
+## Step 1: Setup the GitHub Provider
 
 Setup the [Github Provider](https://registry.terraform.io/providers/integrations/github/latest/docs) in our `providers.tf` file. 
 
 We can copy the code directly with the "Use Provider" button on the top right of the page. 
 
-## Step 2 Setup .envrc file 
+```terraform
+terraform {
+  required_providers {
+    github = {
+      source = "integrations/github"
+      version = "6.5.0"
+    }
+  }
+}
 
-Copy the .envrc.example file to a file name .envrc. 
-In your GitHub account go to Setting > Developer Settings > Personal access tokens > Tokens classic
+provider "github" {
+  # Configuration options
+  token = vars.github_token
+}
+```
 
-Generate a new token using the classic option. 
+## Step 2: Setup `.envrc` file 
 
-Grant it full rights to the `repo` and `delete_repo` permissions. 
+1. Copy the `.envrc.example` file to a file named `.envrc`. 
+2. In your GitHub account go to Setting > Developer Settings > Personal access tokens > Tokens classic
+3. Generate a new token using the classic option. Set the expiration as the shortest possible value.
+4. Grant it full rights to the `repo` and `delete_repo` permissions. 
+5. Copy the value into the new `.envrc` file that you've created. 
 
-Copy the value into the new `.envrc` file that you've created. 
+## Step 3: Setup Variables 
 
-## Step 3 Setup Variables 
-
-Although variables tend to be more dynamic when working a project and you might decide to turn a value into a variable later on when working on a project we will assume that we need two variable values for this project, which are: 
+Like any programming language variables allow us to define repetitive values quickly. They also give us flexibility to change out values between environments (dev,qa,prod):
 
 - `repo_name`
 - `first_file`  
+- `github_token` 
 
-[Documentation is here](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-variables)
+For example: 
 
-We have one additional variable, which is the GitHub token. However, this variable will _never_ be listed in a publicly committed file, even if our respository is private we should assume that this secret is too vulnerable to be exposed. We can store it locally or within a GitHub environment variable if we deploy our Terraform via Github actions. 
+```terraform
+variable "repo_name" {
+  description = "Name of the GitHub repository"
+  type        = string
+}
 
-We should also be aware that some secrets may be stored in our `terraform.tfstate` file, so we should consider this file as containing sensitive information. For this reason, it is excluded from our commits in the `.gitignore` file. 
+variable "first_file" {
+  description = "Name of the initial file to add to the repository"
+  type        = string
+}
 
-## Setup 4 Setup Resources 
+variable "github_token" {
+  description = "Our GitHub PAT Token"
+  type        = string
+  sensitive   = true
+}
+```
+
+[Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+
+## Setup 4: Setup Resources 
+
+Finally, we should investigate resources we can setup in our respository that Terraform will make for us. 
+
+To make it simple we want Terraform to provision us a Github repository and to add a file to it, so we can standardize our process. 
+
+Let's use the following resources: 
+
+- [github_repository](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository)
+- [github_repository_file](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository_file)
+
+Example: 
+```terraform
+resource "github_repository" "example" {
+  name        = var.repo_name
+  description = "A repository created by Terraform"
+  visibility  = "private"
+}
+
+resource "github_repository_file" "example_file" {
+  repository = github_repository.example.name
+  file       = var.first_file
+  content    = "Initial content"
+}
+```
+
+## Step 5: Running the Terraform! 
+> [!CAUTION]
+Terraform may store secrets in `terraform.tfstate`. For this reason, it is excluded from our commits in the `.gitignore` file. 
+
+- [Terraform Init](https://developer.hashicorp.com/terraform/cli/commands/init)
+- Let's also run `direnv allow .` to sideload our environment variable containing our GitHub PAT so that our Terraform will have permission to do what it needs. 
+- [Terraform Workspace](https://developer.hashicorp.com/terraform/cli/commands/workspace)
+- [Terraform Plan](https://developer.hashicorp.com/terraform/cli/commands/plan)
+- [Terraform Apply](https://developer.hashicorp.com/terraform/cli/commands/apply)
+- [Terraform State](https://developer.hashicorp.com/terraform/cli/commands/state)
+- [🌋Terraform Destory](https://developer.hashicorp.com/terraform/cli/commands/destory)
+
+
 
 
 
