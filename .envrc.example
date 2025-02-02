@@ -1,4 +1,4 @@
 # Copy this file and fill in your github token value! 
 # Be careful that the token value is NEVER committed. 
 # If it is committed, then rotate your token immediately! 
-export GITHUB_TOKEN="ghp_YOUR_TOKEN_VALUE" 
+export TF_VAR_github_token="ghp_YOUR_TOKEN_VALUE" 
