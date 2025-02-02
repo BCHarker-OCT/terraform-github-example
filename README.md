@@ -38,7 +38,7 @@ terraform {
 
 provider "github" {
   # Configuration options
-  token = vars.github_token
+  token = var.github_token
 }
 ```
 
