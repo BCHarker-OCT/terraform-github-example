@@ -3,6 +3,13 @@ A template repository to be used for GitHub Terraform Repo Creation.
 
 Our terraform repository structure has already been defined for us here, but if you would like to know more [read here.](FILES-EXPLAINED.md)
 
+The code changes on each step are shown in the following branches: 
+- step1 is excluded, it is not possible to commit this to our repo.
+- `step2`
+- `step3`
+- `step4`
+- `step5`
+
 ## Step 1: Setup `.envrc` file 
 
 1. Copy the `.envrc.example` file to a file named `.envrc`. 
