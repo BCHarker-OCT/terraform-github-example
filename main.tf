@@ -9,3 +9,8 @@ resource "github_repository_file" "example_file" {
   file       = var.first_file
   content    = "Initial content"
 }
+
+output "repository_clone_url" {
+  value       = github_repository.example.git_clone_url
+  description = "The HTTPS URL to clone the GitHub repository."
+}
