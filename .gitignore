@@ -1,6 +1,5 @@
 # Make sure to ignore .envrc 
 .envrc 
-.envrc.example
 
 # Local .terraform directories
 **/.terraform/*
