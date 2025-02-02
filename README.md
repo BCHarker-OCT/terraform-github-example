@@ -9,6 +9,7 @@ The code changes on each step are shown in the following branches:
 - `step3`
 - `step4`
 - `step5`
+- `step6` Doesn't have a branch, but you may wish to create one. Following best practices you would choose to create a Pull Request to the `main` branch. 
 
 ## Step 1: Setup `.envrc` file 
 
@@ -116,7 +117,7 @@ output "repository_clone_url" {
 }
 ```
 
-## Step 5: Running the Terraform! 
+## Step 6: Running the Terraform! 
 > [!CAUTION] 
 > Terraform may store secrets in the `terraform.tfstate` file. For this reason, it is excluded from our commits in the `.gitignore` file. 
 
