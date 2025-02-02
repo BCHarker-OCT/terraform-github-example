@@ -99,7 +99,8 @@ resource "github_repository_file" "example_file" {
 ```
 
 ## Step 5: Running the Terraform! 
-> [!CAUTION] Terraform may store secrets in the terraform.tfstate file. For this reason, it is excluded from our commits in the .gitignore file. 
+> [!CAUTION] 
+> Terraform may store secrets in the `terraform.tfstate` file. For this reason, it is excluded from our commits in the `.gitignore` file. 
 
 - [Terraform Init](https://developer.hashicorp.com/terraform/cli/commands/init)
 - Let's also run `direnv allow .` to sideload our environment variable containing our GitHub PAT so that our Terraform will have permission to do what it needs. 
