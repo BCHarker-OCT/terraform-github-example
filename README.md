@@ -1,6 +1,8 @@
 # terraform-github-example
 A template repository to be used for GitHub Terraform Repo Creation.
 
+Our terraform repository structure has already been defined for us here, but if you would like to know more [read here.](FILES-EXPLAINED.md)
+
 ## Step 1: Setup `.envrc` file 
 
 1. Copy the `.envrc.example` file to a file named `.envrc`. 
