@@ -105,6 +105,17 @@ resource "github_repository_file" "example_file" {
 }
 ```
 
+## Step 5: Add a helpful output block 
+We can add an output block to our `main.tf` to make it easier to get the value of our repository url after the fact: 
+
+Add this to your `main.tf` file: 
+```terraform main.tf
+output "repository_clone_url" {
+  value       = github_repository.example.git_clone_url
+  description = "The HTTPS URL to clone the GitHub repository."
+}
+```
+
 ## Step 5: Running the Terraform! 
 > [!CAUTION] 
 > Terraform may store secrets in the `terraform.tfstate` file. For this reason, it is excluded from our commits in the `.gitignore` file. 
