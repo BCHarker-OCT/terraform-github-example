@@ -4,7 +4,7 @@
 set -x
 
 # Finally we'll run a plan to see what changes will happen
-terraform apply -var-file="dev-vars.tfvars"
+terraform apply -var-file="./environments/dev-vars.tfvars"
 
 # Disable debugging mode if no further commands need to be printed
 set +x
