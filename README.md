@@ -6,10 +6,12 @@ Our terraform repository structure has already been defined for us here, but if 
 ## Step 1: Setup `.envrc` file 
 
 1. Copy the `.envrc.example` file to a file named `.envrc`. 
-2. In your GitHub account go to Setting > Developer Settings > Personal access tokens > Tokens classic
+2. In your GitHub account go to Setting > Developer Settings > Personal access tokens (PAT) > Tokens classic
 3. Generate a new token using the classic option. Set the expiration as the shortest possible value.
 4. Grant it full rights to the `repo` and `delete_repo` permissions. 
 5. Copy the value into the new `.envrc` file that you've created. 
+
+[Watch a short instructional walkthrough](./GitHubPAT.gif)
 
 ## Step 2: Setup the GitHub Provider
 
@@ -33,7 +35,7 @@ provider "github" {
 }
 ```
 
-## Step 4: Setup Variables in `variables.tf` and `z-dev-vars.tfvars` and `z-prod-vars.tfvars` 
+## Step 3: Setup Variables in `variables.tf` and `z-dev-vars.tfvars` and `z-prod-vars.tfvars` 
 
 Like any programming language variables allow us to define repetitive values quickly. They also give us flexibility to change out values between environments (dev,qa,prod):
 
@@ -70,8 +72,7 @@ file_name = "README.md"
 >[!TIP]
 [HashiCorp Terraform Variables Documentation](https://developer.hashicorp.com/terraform/language/values/variables)
 
-
-## Setup 5: Setup Resources in `main.tf`  
+## Setup 4: Setup Resources in `main.tf`  
 
 Finally, we should investigate resources we can setup in our respository that Terraform will make for us. 
 
@@ -98,8 +99,7 @@ resource "github_repository_file" "example_file" {
 ```
 
 ## Step 5: Running the Terraform! 
-> [!CAUTION]
-Terraform may store secrets in `terraform.tfstate`. For this reason, it is excluded from our commits in the `.gitignore` file. 
+> [!CAUTION] Terraform may store secrets in the terraform.tfstate file. For this reason, it is excluded from our commits in the .gitignore file. 
 
 - [Terraform Init](https://developer.hashicorp.com/terraform/cli/commands/init)
 - Let's also run `direnv allow .` to sideload our environment variable containing our GitHub PAT so that our Terraform will have permission to do what it needs. 
