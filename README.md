@@ -73,7 +73,7 @@ variable "github_token" {
 We can populate our `.tfvars` files with your own creative variation of: 
 ```terraform .tfvars
 repo_name = "my-coooool-dev-repo-1"
-file_name = "README.md"
+first_file = "README.md"
 ```
 
 >[!TIP]
