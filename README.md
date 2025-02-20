@@ -127,4 +127,4 @@ output "repository_clone_url" {
 - [Terraform Plan](https://developer.hashicorp.com/terraform/cli/commands/plan)
 - [Terraform Apply](https://developer.hashicorp.com/terraform/cli/commands/apply)
 - [Terraform State](https://developer.hashicorp.com/terraform/cli/commands/state)
-- [🌋Terraform Destory](https://developer.hashicorp.com/terraform/cli/commands/destory)
+- [🌋Terraform Destroy](https://developer.hashicorp.com/terraform/cli/commands/destory)
